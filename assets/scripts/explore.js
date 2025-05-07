@@ -11,6 +11,7 @@ function init() {
   let voices = speech.getVoices();
 
   function getDifferentVoices() {
+    voiceSelect.innerHTML = '';
     voices = speech.getVoices();
 
     for (let i = 0; i < voices.length; i++) {
@@ -23,6 +24,7 @@ function init() {
     }
   }
 
+  getDifferentVoices();
   if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = getDifferentVoices;
   }
@@ -33,8 +35,8 @@ function init() {
 
   talkButton.addEventListener("click", function() {
     let spokenWords = new SpeechSynthesisUtterance(text.value);
-    const selectedVoice = dropdown.selectedOptions[0].getAttribute('data-name');
-    const voices = synth.getVoices();
+    const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
+    const voices = speech.getVoices();
     spokenWords.voice = voices.find(voice => voice.name === selectedVoice);
 
     speech.speak(spokenWords);
