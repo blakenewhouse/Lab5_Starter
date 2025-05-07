@@ -9,7 +9,6 @@ function init() {
   const pictureSelect = document.getElementById("horn-select");
   const picture = document.querySelector("img");
   const audio = document.querySelector(".hidden");
-  const selected = pictureSelect.value;
   
   pictureSelect.addEventListener("change", function () {
     const selected = pictureSelect.value;
