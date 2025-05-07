@@ -11,7 +11,7 @@ function init() {
   let voices = speech.getVoices();
 
   function getDifferentVoices() {
-    voiceSelect.innerHTML = '';
+    voiceSelect.innerHTML = '<option value="select" disabled selected>Select Voice:</option>';
     voices = speech.getVoices();
 
     for (let i = 0; i < voices.length; i++) {
