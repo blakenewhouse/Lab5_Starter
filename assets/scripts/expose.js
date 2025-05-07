@@ -32,7 +32,7 @@ function init() {
   const volumeDiv = document.getElementById("volume-controls");
   const volumeBar = document.getElementById("volume");
 
-  volumeBar.addEventListener("input", function () {
+  volumeBar.addEventListener("click", function () {
     let volume = volumeBar.value;
     const icon = volumeDiv.querySelector("img");
 
