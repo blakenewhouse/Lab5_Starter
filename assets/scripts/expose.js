@@ -11,7 +11,7 @@ function init() {
   const audio = document.querySelector(".hidden");
   
   pictureSelect.addEventListener("change", function () {
-    const selected = pictureSelect.value;
+    let selected = pictureSelect.value;
 
     if (selected === "air-horn") {
       picture.src = "assets/images/air-horn.svg";
