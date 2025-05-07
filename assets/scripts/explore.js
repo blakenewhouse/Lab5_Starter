@@ -17,8 +17,8 @@ function init() {
       const option = document.createElement("option");
       option.value = `${voices[i].name}`;
       option.textContent = `${voices[i].name} (${voices[i].lang})`;
-      option.setAttribute("data-lang", voices[i].lang);
       option.setAttribute("data-name", voices[i].name); 
+      option.setAttribute("data-lang", voices[i].lang);
       voiceSelect.appendChild(option);
     }
   }
@@ -33,22 +33,18 @@ function init() {
 
   talkButton.addEventListener("click", function() {
     let spokenWords = new SpeechSynthesisUtterance(text.value);
-    for (let i = 0; i < voices.length; i++) {
-      if (voices[i].name === voiceSelect.value) {
-        utterance.voice = voices[i];
-      }
-    }
+    const selectedVoice = dropdown.selectedOptions[0].getAttribute('data-name');
+    const voices = synth.getVoices();
+    spokenWords.voice = voices.find(voice => voice.name === selectedVoice);
 
     speech.speak(spokenWords);
 
     // change face while speaking
-    spokenWords.onstart = function() {
-      face.src = "assets/images/smiling-open.png";
-    };
+    face.src = "assets/images/smiling-open.png";
 
-    spokenWords.onend = function() {
+    spokenWords.addEventListener("end", function() {
       face.src = "assets/images/smiling.png";
-    };
+    }); 
 
   });
 
