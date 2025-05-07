@@ -9,10 +9,10 @@ function init() {
   const pictureSelect = document.getElementById("horn-select");
   const picture = document.querySelector("img");
   const audio = document.querySelector(".hidden");
-  const selected = pictureSelect.value;
+  let selected;
   
-  pictureSelect.addEventListener("change", function () {
-    const selected = pictureSelect.value;
+  pictureSelect.addEventListener("input", function () {
+    selected = pictureSelect.value;
 
     if (selected === "air-horn") {
       picture.src = "assets/images/air-horn.svg";
@@ -55,10 +55,9 @@ function init() {
 
 
   soundButton.addEventListener("click", function() {
-    if (selected == "party-horn") {
+    audio.play();
+    if (pictureSelect.value === "party-horn") {
       jsConfetti.addConfetti();
     }
-
-    audio.play();
   });
 }
