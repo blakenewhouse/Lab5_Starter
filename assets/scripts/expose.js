@@ -33,7 +33,7 @@ function init() {
   const volumeBar = document.getElementById("volume");
 
   volumeBar.addEventListener("change", function () {
-    let volume = volumeBar.value; //maybe parseInt?
+    let volume = volumeBar.value;
     const icon = volumeDiv.querySelector("img");
 
     if (volume == 0) {
@@ -51,7 +51,6 @@ function init() {
 
   // play sound
   const soundButton = document.querySelector("button");
-  const jsConfetti = new JSConfetti();
 
   soundButton.addEventListener("click", function() {
     if (selected == "party-horn") {
