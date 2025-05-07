@@ -9,9 +9,10 @@ function init() {
   const pictureSelect = document.getElementById("horn-select");
   const picture = document.querySelector("img");
   const audio = document.querySelector(".hidden");
+  const selected = pictureSelect.value;
   
   pictureSelect.addEventListener("change", function () {
-    let selected = pictureSelect.value;
+    selected = pictureSelect.value;
 
     if (selected === "air-horn") {
       picture.src = "assets/images/air-horn.svg";
@@ -51,9 +52,10 @@ function init() {
 
   // play sound
   const soundButton = document.querySelector("button");
-
+  
 
   soundButton.addEventListener("click", function() {
+    selected = pictureSelect.value;
     if (selected == "party-horn") {
       jsConfetti.addConfetti();
     }
