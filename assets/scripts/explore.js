@@ -4,21 +4,27 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   // voice selection/generation
+  const speech = window.SpeechSynthesis;
   const voiceSelect = document.getElementById("voice-select");
   const face = document.querySelector("img");
-  const voices = SpeechSynthesis.getVoices();
-  let selected = voiceSelect.value;
+  let voices = speech.getVoices();
 
-  for (const i of voices) {
-    const newOption = document.createElement("option");
-    newOption.value = i.name;
-    newOption.textContent = `${i.name()} (${i.lang()})`;
-    voiceSelect.appendChild(newOption);
+  function getDifferentVoices() {
+    voices = speech.getVoices();
+
+    for (let i = 0; i < voices.length; i++) {
+      const newOption = document.createElement("option");
+      option.textContent = `${voices[i].name} (${voices[i].lang})`;
+      option.value = `${voices[i].name}`;
+/*       option.setAttribute("data-lang", voices[i].lang);
+      option.setAttribute("data-name", voices[i].name); */
+      voiceSelect.appendChild(option);
+    }
   }
 
-  voiceSelect.addEventListener("change", function () {
-    selected = voiceSelect.value;
-  });
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = getDifferentVoices;
+  }
 
   // press to talk
   const talkButton = document.querySelector("button");
@@ -26,9 +32,13 @@ function init() {
 
   talkButton.addEventListener("click", function() {
     let spokenWords = new SpeechSynthesisUtterance(text.value);
-    spokenWords.voice = voices.find(voice => voice.name === selectedVoice);
+    for (let i = 0; i < voices.length; i++) {
+      if (voices[i].name === voiceSelect.value) {
+        utterance.voice = voices[i];
+      }
+    }
 
-    SpeechSynthesis.speak(spokenWords);
+    speech.speak(spokenWords);
 
     // Display face while speaking
     spokenWords.onstart = function() {
@@ -39,7 +49,6 @@ function init() {
       face.src = "assets/images/smiling.png";
     };
 
-    window.speechSynthesis.speak(spokenWords);
   });
 
 }
