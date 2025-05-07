@@ -14,14 +14,14 @@ function init() {
     const selected = pictureSelect.value;
 
     if (selected === "air-horn") {
-      picture.src = "../images/air-horn.svg";
-      audio.src = "../audio/air-horn.mp3";
+      picture.src = "assets/images/air-horn.svg";
+      audio.src = "assets/audio/air-horn.mp3";
     } else if (selected === "car-horn") {
-      picture.src = "../images/car-horn.svg";
-      audio.src = "../audio/car-horn.mp3";
+      picture.src = "assets/images/car-horn.svg";
+      audio.src = "assets/audio/car-horn.mp3";
     } else if (selected === "party-horn") {
-      picture.src = "../images/party-horn.svg";
-      audio.src = "../audio/party-horn.mp3";
+      picture.src = "assets/images/party-horn.svg";
+      audio.src = "assets/audio/party-horn.mp3";
     }
   });
 
