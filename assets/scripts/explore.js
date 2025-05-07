@@ -14,12 +14,12 @@ function init() {
     voices = speech.getVoices();
 
     for (let i = 0; i < voices.length; i++) {
-      const newOption = document.createElement("option");
-      option.textContent = `${voices[i].name} (${voices[i].lang})`;
+      const option = document.createElement("option");
       option.value = `${voices[i].name}`;
+      option.textContent = `${voices[i].name} (${voices[i].lang})`;
       option.setAttribute("data-lang", voices[i].lang);
       option.setAttribute("data-name", voices[i].name); 
-      voiceSelect.appendChild(newOption);
+      voiceSelect.appendChild(option);
     }
   }
 
@@ -41,7 +41,7 @@ function init() {
 
     speech.speak(spokenWords);
 
-    // Display face while speaking
+    // change face while speaking
     spokenWords.onstart = function() {
       face.src = "assets/images/smiling-open.png";
     };
