@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   // voice selection/generation
-  const speech = window.SpeechSynthesis;
+  const speech = window.speechSynthesis;
   const voiceSelect = document.getElementById("voice-select");
   const face = document.querySelector("img");
   let voices = speech.getVoices();
@@ -16,8 +16,8 @@ function init() {
       const newOption = document.createElement("option");
       option.textContent = `${voices[i].name} (${voices[i].lang})`;
       option.value = `${voices[i].name}`;
-      //option.setAttribute("data-lang", voices[i].lang);
-      //option.setAttribute("data-name", voices[i].name); 
+      option.setAttribute("data-lang", voices[i].lang);
+      option.setAttribute("data-name", voices[i].name); 
       voiceSelect.appendChild(newOption);
     }
   }
