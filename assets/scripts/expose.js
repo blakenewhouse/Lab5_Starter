@@ -15,12 +15,15 @@ function init() {
 
     if (selected === "air-horn") {
       picture.src = "assets/images/air-horn.svg";
+      picture.alt = "air-horn";
       audio.src = "assets/audio/air-horn.mp3";
     } else if (selected === "car-horn") {
       picture.src = "assets/images/car-horn.svg";
+      picture.alt = "car-horn";
       audio.src = "assets/audio/car-horn.mp3";
     } else if (selected === "party-horn") {
       picture.src = "assets/images/party-horn.svg";
+      picture.alt = "party-horn";
       audio.src = "assets/audio/party-horn.mp3";
     }
   });
