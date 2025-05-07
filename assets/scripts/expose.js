@@ -3,5 +3,57 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  // TODO
+
+  // picture + audio selection
+  const pictureSelect = document.getElementById("horn-select");
+  const picture = document.querySelector("img");
+  const audio = document.querySelector(".hidden");
+  const selected = pictureSelect.value;
+  
+  pictureSelect.addEventListener("change", function () {
+
+    if (selected === "air-horn") {
+      picture.src = "../images/air-horn.svg";
+      audio.src = "../audio/air-horn.mp3";
+    } else if (selected === "car-horn") {
+      picture.src = "../images/car-horn.svg";
+      audio.src = "../audio/car-horn.mp3";
+    } else if (selected === "party-horn") {
+      picture.src = "../images/party-horn.svg";
+      audio.src = "../audio/party-horn.mp3";
+    }
+  });
+
+  // volume slider
+  const volumeDiv = document.getElementById("volume-controls");
+  const volumeBar = document.getElementById("volume");
+
+  volumeBar.addEventListener("change", function () {
+    let volume = volumeBar.value; //maybe parseInt?
+    const icon = volumeDiv.querySelector("img");
+
+    if (volume == 0) {
+      icon.src = "assets/icons/volume-level-0.svg";
+    } else if (volume < 33) {
+      icon.src = "assets/icons/volume-level-1.svg";
+    } else if (volume < 67) {
+      icon.src = "assets/icons/volume-level-2.svg";
+    } else {
+      icon.src = "assets/icons/volume-level-3.svg";
+    }
+
+    audio.volume = (volume / 100);
+  });
+
+  // play sound
+  const soundButton = document.queryselector("button");
+  const jsConfetti = new JSConfetti();
+
+  soundButton.addEventListener("click", function() {
+    if (selected == "party-horn") {
+      jsConfetti.addConfetti();
+    }
+
+    audio.play();
+  });
 }
